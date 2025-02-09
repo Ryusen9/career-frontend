@@ -1,10 +1,7 @@
-
-
 function App() {
-
   return (
-    <p className="text-3xl">Hello....</p>
-  )
+    <p>Home is loading...</p>
+  );
 }
 
-export default App
+export default App;
