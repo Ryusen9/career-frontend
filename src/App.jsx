@@ -1,6 +1,8 @@
+import HomeLayout from "./Layout/HomeLayout";
+
 function App() {
   return (
-    <p>Home is loading...</p>
+    <HomeLayout/>
   );
 }
 
