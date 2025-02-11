@@ -1,11 +1,11 @@
 import Lottie from "lottie-react";
 import lottieRegister from "../../public/Lottie/Animation - 1739198289081.json";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../Context/ContextProvider";
 
 const Register = () => {
-  const {createUser} = useState(AuthContext);
+  const {createUser} = useContext(AuthContext);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const handleRegister = (e) => {
     e.preventDefault();
@@ -14,6 +14,13 @@ const Register = () => {
     const password = e.target.password.value;
     const photo = e.target.photo.value;
     console.log(name, email, password, photo);
+    createUser(email, password)
+    .then(result => {
+      console.log(result.user)
+    })
+    .catch(error => {
+      console.error(error.message)
+    })
   };
   return (
     <div className="min-h-screen max-w-5xl mx-auto gap-5 md:gap-10 flex flex-col md:flex-row items-center justify-center">

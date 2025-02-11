@@ -78,9 +78,12 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end gap-2">
         <Link to={"/register"}>
           <span className="btn">Sign Up</span>
+        </Link>
+        <Link to={"/SignIn"}>
+          <span className="btn">Sign In</span>
         </Link>
       </div>
     </div>
