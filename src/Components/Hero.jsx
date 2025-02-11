@@ -1,7 +1,7 @@
 const Hero = () => {
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-center text-3xl md:text-5xl font-bold">
+      <p className="text-center text-slate-300 text-3xl md:text-5xl font-bold">
         Build and Ship a Job <br /> Board fast with Quality.
       </p>
       <label className="input mx-auto">
@@ -26,7 +26,7 @@ const Hero = () => {
         <kbd className="kbd kbd-sm">K</kbd>
       </label>
       <div className="flex gap-1.5 items-center justify-center text-center">
-        <p className="text-sm md:text-base">Popular jobs: </p>
+        <p className="text-sm text-slate-300 md:text-base">Popular jobs: </p>
         <div className="badge badge-sm md:badge-md">Web Development</div>
         <div className="badge badge-sm md:badge-md">Designer</div>
         <div className="badge badge-sm md:badge-md">Software Engineer</div>

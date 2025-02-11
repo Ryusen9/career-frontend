@@ -1,11 +1,15 @@
+import { Link } from "react-router";
 
 const Navbar = () => {
-    
   return (
     <div className="navbar fixed top-0 left-0 bg-transparent">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn bg-slate-300/30 btn-ghost lg:hidden"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -27,7 +31,9 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Home</a>
+              <Link to={"/"}>
+                <span>Home</span>
+              </Link>
             </li>
             <li>
               <a>Jobs</a>
@@ -45,12 +51,14 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Career Portal</a>
+        <a className="btn btn-ghost text-slate-300 text-xl">Career Portal</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu text-slate-300 menu-horizontal px-1">
           <li>
-            <a>Home</a>
+            <Link to={"/"}>
+              <span>Home</span>
+            </Link>
           </li>
           <li>
             <details>
@@ -71,7 +79,9 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Sign Up</a>
+        <Link to={"/register"}>
+          <span className="btn">Sign Up</span>
+        </Link>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ const ErrorPage = () => {
         </Fade>
       </div>
       <div className="flex gap-4 flex-col">
-        <p className="text-center text-5xl font-bold">
+        <p className="text-center text-3xl md:text-5xl font-bold">
           There is an <span className="text-red-500">error</span> <br />{" "}
           occurred loading this page.
         </p>
