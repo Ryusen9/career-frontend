@@ -1,12 +1,16 @@
 import Lottie from "lottie-react";
 import lottieRegister from "../../public/Lottie/Animation - 1739198289081.json";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
 import { useContext, useState } from "react";
 import AuthContext from "../Context/ContextProvider";
+import { useNavigate } from "react-router";
+import { IoLogoGoogle } from "react-icons/io5";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Register = () => {
-  const {createUser} = useContext(AuthContext);
+  const { createUser, signInWithGoogle } = useContext(AuthContext);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -15,12 +19,13 @@ const Register = () => {
     const photo = e.target.photo.value;
     console.log(name, email, password, photo);
     createUser(email, password)
-    .then(result => {
-      console.log(result.user)
-    })
-    .catch(error => {
-      console.error(error.message)
-    })
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+    navigate("/");
   };
   return (
     <div className="min-h-screen max-w-5xl mx-auto gap-5 md:gap-10 flex flex-col md:flex-row items-center justify-center">
@@ -163,6 +168,17 @@ const Register = () => {
             </button>
           </div>
         </form>
+        <div className="flex w-full flex-col">
+          <div className="divider">OR</div>
+          <div className="card bg-base-300 rounded-box flex flex-row gap-3 items-center justify-center p-4 place-items-center">
+            <button onClick={signInWithGoogle} className="btn btn-circle">
+              <IoLogoGoogle/>
+            </button>
+            <button className="btn btn-circle">
+              <FaGithub/>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

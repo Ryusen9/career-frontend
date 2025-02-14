@@ -3,9 +3,12 @@ import LoginLottie from "../../public/Lottie/Animation - 1739299705283.json";
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import AuthContext from "../Context/ContextProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const {signInUser} = useContext(AuthContext);
+  const navigate = useNavigate()
   const handleSignIn = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -13,12 +16,30 @@ const Login = () => {
     console.log(email, password);
     signInUser(email, password)
     .then(result => {
-        console.log(result.user);
+      if(result.user) {
+        Swal.fire({
+          title: 'Login Successful',
+          text: 'Welcome!',
+          icon:'success',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } 
+      if(!result.user) {
+        Swal.fire({
+          title: 'Error',
+          text: 'Invalid credentials!',
+          icon: 'error',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
     })
     .catch(error => {
         console.log(error.message);
     })
     e.target.reset();
+    navigate("/");
   }
   return (
     <div className="min-h-screen flex items-center justify-center">
