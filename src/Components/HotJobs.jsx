@@ -17,7 +17,7 @@ const HotJobs = () => {
         </p>
         <p className="text-sm mt-2 md:text-base">Explore jobs around the world!</p>
       </div>
-      <div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-[90%] md:max-w-7xl mx-auto gap-2">
         {jobs.map(job => <JobCard key={job._id} job={job}/>)}
       </div>
     </div>
