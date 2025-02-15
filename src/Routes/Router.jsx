@@ -5,31 +5,37 @@ import MainLayout from "../Layout/MainLayout";
 import Register from "../Components/Register";
 import Login from "../Components/Login";
 import JobDetails from "../Components/JobDetails";
+import PrivateRoute from "../Private/PrivateRoute";
 
 const routers = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout/>,
-    errorElement: <ErrorPage/>,
+    element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
-        {
-            path: "/",
-            element: <App/>
-        },
-        {
-          path: "/register",
-          element: <Register/>,
-        },
-        {
-          path: "/signIn",
-          element: <Login/>,
-        },
-        {
-          path: "/jobs/:id",
-          element: <JobDetails/>,
-          loader: ({params}) => fetch(`http://localhost:4322/jobs/${params.id}`)
-        }
-    ]
+      {
+        path: "/",
+        element: <App />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/signIn",
+        element: <Login />,
+      },
+      {
+        path: "/jobs/:id",
+        element: (
+          <PrivateRoute>
+            <JobDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:4322/jobs/${params.id}`),
+      },
+    ],
   },
 ]);
 export default routers;
