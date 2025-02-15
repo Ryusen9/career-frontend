@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { CiLocationOn } from "react-icons/ci";
 import { FaBagShopping } from "react-icons/fa6";
+import { Link } from "react-router";
 const JobCard = ({ job }) => {
   return (
     <div className="hover:shadow-md duration-500 hover:shadow-slate-400/30 p-4 rounded-lg bg-slate-800/40">
@@ -33,12 +34,11 @@ const JobCard = ({ job }) => {
         </ul>
       </div>
       <div className="my-3 flex gap-2">
-        <button className="btn btn-sm md:btn-md bg-transparent border-2 border-slate-100">
-          Details
-        </button>
-        <button className="btn btn-sm btn-primary md:btn-md">
-          Apply
-        </button>
+        <Link to={`/jobs/${job._id}`}>
+          <button className="btn btn-sm btn-primary md:btn-md">
+            Apply
+          </button>
+        </Link>
       </div>
     </div>
   );

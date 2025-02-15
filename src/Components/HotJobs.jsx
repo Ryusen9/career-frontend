@@ -8,7 +8,6 @@ const HotJobs = () => {
       .then((response) => response.json())
       .then((data) => setJobs(data));
   }, []);
-  console.log(jobs);
   return (
     <div className="flex flex-col gap-6 items-center justify-center">
       <div className="text-center">
