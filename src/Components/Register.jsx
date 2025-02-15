@@ -5,8 +5,6 @@ import { useContext, useState } from "react";
 import AuthContext from "../Context/ContextProvider";
 import { useNavigate } from "react-router";
 import { IoLogoGoogle } from "react-icons/io5";
-import { FaXTwitter } from "react-icons/fa6";
-
 const Register = () => {
   const { createUser, signInWithGoogle } = useContext(AuthContext);
   const [passwordVisible, setPasswordVisible] = useState(false);
