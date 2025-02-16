@@ -36,7 +36,7 @@ const JobCard = ({ job }) => {
       <div className="my-3 flex gap-2">
         <Link to={`/jobs/${job._id}`}>
           <button className="btn btn-sm btn-primary md:btn-md">
-            Apply
+            Details
           </button>
         </Link>
       </div>
