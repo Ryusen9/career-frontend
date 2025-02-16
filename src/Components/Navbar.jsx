@@ -72,7 +72,7 @@ const Navbar = () => {
                 </li>
                 <Link to={"/myApplications"}>
                   <li>
-                    <a>My Application</a>
+                    <span>My Application</span>
                   </li>
                 </Link>
               </ul>
@@ -100,7 +100,7 @@ const Navbar = () => {
                 </li>
                 <Link to={"/myApplications"}>
                   <li>
-                    <a>My Application</a>
+                    <span>My Application</span>
                   </li>
                 </Link>
               </ul>
