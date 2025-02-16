@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router";
 import AuthContext from "../Context/ContextProvider";
 import Swal from "sweetalert2";
-import { motion } from "motion/react"
+import { motion } from "motion/react";
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const handleSignOut = () => {
@@ -70,9 +70,11 @@ const Navbar = () => {
                 <li>
                   <a>Find Job</a>
                 </li>
-                <li>
-                  <a>Find Candidate</a>
-                </li>
+                <Link to={"/myApplications"}>
+                  <li>
+                    <a>My Application</a>
+                  </li>
+                </Link>
               </ul>
             </li>
             <li>
@@ -96,9 +98,11 @@ const Navbar = () => {
                 <li>
                   <a>Find Job</a>
                 </li>
-                <li>
-                  <a>Find Candidate</a>
-                </li>
+                <Link to={"/myApplications"}>
+                  <li>
+                    <a>My Application</a>
+                  </li>
+                </Link>
               </ul>
             </details>
           </li>
@@ -115,7 +119,14 @@ const Navbar = () => {
         ) : (
           <>
             <Link to={"/register"}>
-              <motion.span whileHover={{scale: 1.1}} whileTap={{scale: 0.95}} transition={{duration: 0.5}} className="btn">Sign Up</motion.span>
+              <motion.span
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.5 }}
+                className="btn"
+              >
+                Sign Up
+              </motion.span>
             </Link>
             <Link to={"/SignIn"}>
               <span className="btn">Sign In</span>

@@ -7,6 +7,7 @@ import Login from "../Components/Login";
 import JobDetails from "../Components/JobDetails";
 import PrivateRoute from "../Private/PrivateRoute";
 import ApplyForm from "../Components/ApplyForm";
+import MyApplication from "../Components/MyApplication";
 
 const routers = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const routers = createBrowserRouter([
       {
         path: "/apply/:id",
         element: <PrivateRoute><ApplyForm/></PrivateRoute>
+      },
+      {
+        path: "/myApplications",
+        element: <PrivateRoute><MyApplication/></PrivateRoute>
       }
     ],
   },
