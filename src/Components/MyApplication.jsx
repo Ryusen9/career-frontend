@@ -23,7 +23,6 @@ const MyApplication = () => {
       </p>
       <div className="overflow-x-auto mt-8 w-[90%] mx-auto rounded-box border border-base-content/5 bg-base-100">
         <table className="table">
-          {/* head */}
           <thead>
             <tr>
               <th>Job Title</th>

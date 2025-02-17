@@ -57,7 +57,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[5] mt-3 w-52 p-2 shadow"
           >
             <li>
               <Link to={"/"}>
@@ -66,10 +66,12 @@ const Navbar = () => {
             </li>
             <li>
               <a>Jobs</a>
-              <ul className="p-2">
-                <li>
-                  <a>Find Job</a>
-                </li>
+              <ul className="p-2 z-[6]">
+                <Link to={"/addJob"}>
+                  <li>
+                    <span>Add a job</span>
+                  </li>
+                </Link>
                 <Link to={"/myApplications"}>
                   <li>
                     <span>My Application</span>
@@ -95,9 +97,11 @@ const Navbar = () => {
             <details>
               <summary>Jobs</summary>
               <ul className="p-2">
-                <li>
-                  <a>Find Job</a>
-                </li>
+                <Link to={"/addJob"}>
+                  <li>
+                    <span>Add a job</span>
+                  </li>
+                </Link>
                 <Link to={"/myApplications"}>
                   <li>
                     <span>My Application</span>
