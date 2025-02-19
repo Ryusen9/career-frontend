@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import AuthContext from "../Context/ContextProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router";
+import axios from "axios";
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const { signInUser } = useContext(AuthContext);
@@ -18,6 +19,10 @@ const Login = () => {
     console.log(email, password);
     signInUser(email, password)
       .then((result) => {
+        console.log(result.user.email);
+        const user = {email : email};
+        axios.post('http://localhost:4322/jwt', user)
+        .then(data => console.log(data))
         if (result.user) {
           Swal.fire({
             title: "Login Successful",
