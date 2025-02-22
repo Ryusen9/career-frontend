@@ -21,8 +21,8 @@ const Login = () => {
       .then((result) => {
         console.log(result.user.email);
         const user = {email : email};
-        axios.post('http://localhost:4322/jwt', user)
-        .then(data => console.log(data))
+        axios.post('http://localhost:4322/jwt', user, {withCredentials: true})
+        .then(res => console.log(res.data))
         if (result.user) {
           Swal.fire({
             title: "Login Successful",
