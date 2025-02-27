@@ -4,7 +4,10 @@ import JobCard from "./Jobcard";
 const HotJobs = () => {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4322/jobs")
+    fetch("http://localhost:4322/jobs", {
+      method: "GET",
+      credentials: "include"
+    })
       .then((response) => response.json())
       .then((data) => setJobs(data));
   }, []);

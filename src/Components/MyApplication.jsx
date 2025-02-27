@@ -8,14 +8,29 @@ const MyApplication = () => {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:4322/job-application?email=${user.email}`)
-      .then((result) => setJobs(result.data));
+      .get(`http://localhost:4322/job-application?email=${user.email}`, {
+        withCredentials: true,
+      })
+      .then((result) => setJobs(result.data))
+      .catch((error) =>
+        console.error("Error fetching job applications:", error)
+      );
   }, [user?.email]);
   const handleDelete = (jobId) => {
-        axios
-         .delete(`http://localhost:4322/job-application?job_id=${jobId}`)
-         .then(result => console.log(result))
-  }
+    axios
+      .delete(`http://localhost:4322/job-application/${jobId}`, {
+        withCredentials: true,
+      })
+      .then((result) => {
+        if (result.status === 200) {
+          setJobs((prevJobs) => prevJobs.filter((job) => job.job_id !== jobId));
+        }
+      })
+      .catch((error) =>
+        console.error("Error deleting job application:", error)
+      );
+  };
+
   return (
     <div className="mt-16 min-h-screen">
       <p className="text-center text-2xl md:text-4xl font-medium">
@@ -40,7 +55,10 @@ const MyApplication = () => {
                 <td>{job.category}</td>
                 <td>{job.jobType}</td>
                 <td>
-                  <button onClick={() => handleDelete(job.job_id)} className="btn btn-error text-white btn-sm">
+                  <button
+                    onClick={() => handleDelete(job.job_id)}
+                    className="btn btn-error text-white btn-sm"
+                  >
                     <TbTrashXFilled />
                   </button>
                 </td>
