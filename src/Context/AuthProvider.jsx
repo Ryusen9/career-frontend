@@ -11,6 +11,7 @@ import {
   signOut,
 } from "firebase/auth";
 import auth from "../Firebase/firebase.init";
+import axios from "axios";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -41,12 +42,32 @@ const AuthProvider = ({ children }) => {
   const signInWithGithub = () => {
     setLoading(true);
     return signInWithPopup(auth, githubProvider);
-  }
+  };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      if (currentUser?.email) {
+        axios
+          .post("http://localhost:4322/jwt", user, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+            setLoading(false);
+          });
+      } else {
+        axios
+          .post(
+            "http://localhost:4322/logout",
+            {},
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+            setLoading(false);
+          });
+      }
     });
     return () => unSubscribe();
   }, []);
@@ -58,7 +79,7 @@ const AuthProvider = ({ children }) => {
     signInUser,
     signOutUser,
     signInWithGoogle,
-    signInWithGithub
+    signInWithGithub,
   };
   return (
     <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
