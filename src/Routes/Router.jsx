@@ -36,20 +36,32 @@ const routers = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:4322/jobs/${params.id}`),
+          fetch(`https://job-portal-ten-amber.vercel.app/jobs/${params.id}`),
       },
       {
         path: "/apply/:id",
-        element: <PrivateRoute><ApplyForm/></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <ApplyForm />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myApplications",
-        element: <PrivateRoute><MyApplication/></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <MyApplication />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/addJob",
-        element: <PrivateRoute><AddJob/></PrivateRoute>
-      }
+        element: (
+          <PrivateRoute>
+            <AddJob />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);

@@ -20,9 +20,12 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         console.log(result.user.email);
-        const user = {email : email};
-        axios.post('http://localhost:4322/jwt', user, {withCredentials: true})
-        .then(res => console.log(res.data))
+        const user = { email: email };
+        axios
+          .post("https://job-portal-ten-amber.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
+          .then((res) => console.log(res.data));
         if (result.user) {
           Swal.fire({
             title: "Login Successful",

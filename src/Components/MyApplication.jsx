@@ -2,15 +2,19 @@ import { useEffect, useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import axios from "axios";
 import { TbTrashXFilled } from "react-icons/tb";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const MyApplication = () => {
   const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
+  const axiosSecure = useAxiosSecure();
   useEffect(() => {
-    axios
-      .get(`http://localhost:4322/job-application?email=${user.email}`, {
-        withCredentials: true,
-      })
+    // axios
+    //   .get(`https://job-portal-ten-amber.vercel.app/job-application?email=${user.email}`, {
+    //     withCredentials: true,
+    //   })
+    axiosSecure
+      .get(`/job-application?email=${user.email}`)
       .then((result) => setJobs(result.data))
       .catch((error) =>
         console.error("Error fetching job applications:", error)
@@ -18,9 +22,12 @@ const MyApplication = () => {
   }, [user?.email]);
   const handleDelete = (jobId) => {
     axios
-      .delete(`http://localhost:4322/job-application/${jobId}`, {
-        withCredentials: true,
-      })
+      .delete(
+        `https://job-portal-ten-amber.vercel.app/job-application/${jobId}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => {
         if (result.status === 200) {
           setJobs((prevJobs) => prevJobs.filter((job) => job.job_id !== jobId));

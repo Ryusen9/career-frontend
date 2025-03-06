@@ -44,14 +44,14 @@ const AddJob = () => {
       responsibilities,
     };
     axios
-      .post("http://localhost:4322/jobs", finalData)
+      .post("https://job-portal-ten-amber.vercel.app/jobs", finalData)
       .then((result) => {
-        if(result.data.insertedId) {
+        if (result.data.insertedId) {
           Swal.fire({
             title: "Job Posted Successfully",
             text: "Your job has been posted successfully!",
             icon: "success",
-          })
+          });
         }
       });
   };

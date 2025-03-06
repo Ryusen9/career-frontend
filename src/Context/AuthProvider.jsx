@@ -49,7 +49,9 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser?.email) {
         axios
-          .post("http://localhost:4322/jwt", user, { withCredentials: true })
+          .post("https://job-portal-ten-amber.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
           .then((res) => {
             console.log(res.data);
             setLoading(false);
@@ -57,7 +59,7 @@ const AuthProvider = ({ children }) => {
       } else {
         axios
           .post(
-            "http://localhost:4322/logout",
+            "https://job-portal-ten-amber.vercel.app/logout",
             {},
             {
               withCredentials: true,
